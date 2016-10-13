@@ -7,11 +7,15 @@ public class Calculator {
 		}
 		if(input.contains(",")){
 			String [] numbers = input.split(",");
-			int first = Integer.parseInt(numbers[0]);
-			int second = Integer.parseInt(numbers[1]);
+			int first = stringToInt(numbers[0]);
+			int second = stringToInt(numbers[1]);
 			return first+second;
 		}
 
+		return stringToInt(input);
+	}
+	private static int stringToInt(String input)
+	{
 		return Integer.parseInt(input);
 	}
 }
