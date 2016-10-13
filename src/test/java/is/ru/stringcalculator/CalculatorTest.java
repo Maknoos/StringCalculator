@@ -24,4 +24,12 @@ public class CalculatorTest {
 	public void TestFiveStrings(){
 		assertEquals(26,Calculator.add("1,2,5,8,10"));
 	}
+	@Test
+	public void TestNewLine(){
+		assertEquals(7,Calculator.add("1\n2\n4"));
+	}
+	@Test
+	public void TestNewLineAndCommas(){
+		assertEquals(27,Calculator.add("1\n4,5,7\n10"));
+	}
 }
