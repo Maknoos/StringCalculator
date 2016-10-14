@@ -18,7 +18,7 @@ public class Calculator {
 			while(counter!=arraySize){
 				int temp=stringToInt(numbers[counter]);
 				
-				if(temp < 0){
+				if(isNegative(temp)){
 					illegalInput = true;
 					negatives[counter] = temp;
 				}
@@ -28,29 +28,36 @@ public class Calculator {
 			}
 
 			if(illegalInput){
-				String exceptionString = "Negatives not allowed:";
-				 for(int i =0; i< negatives.length; i++){
-					if(negatives[i]!=0)
-					{
-						exceptionString += negatives[i];
-					}
-				}
-				throw new IllegalArgumentException(exceptionString);
+				createAndThrowMultipleException(negatives);
 			}
 			return stringSum;
 		}
 
 		int temp = stringToInt(input);
-		if(temp<0){
+		if(isNegative(temp)){
 			String exceptionString = "Negatives not allowed:" + temp;
 			throw new IllegalArgumentException(exceptionString);
 		}
 		return temp;
 	}
 
+	private static void createAndThrowMultipleException( int [] negatives){
+		String exceptionString = "Negatives not allowed:";
+			for(int i =0; i< negatives.length; i++){
+				if(negatives[i]!=0)
+				{
+					exceptionString += negatives[i];
+				}
+			}
+		throw new IllegalArgumentException(exceptionString);
+	}
+
 	private static int stringToInt(String input){
 		return Integer.parseInt(input);
 	}
 
+	private static boolean isNegative(int input){
+		return (input < 0);
+	}
 	private static String splitExpression = "[\n,]"; 
 }
