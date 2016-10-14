@@ -22,12 +22,25 @@ public class Calculator {
 			return stringSum;
 		}
 
-		return stringToInt(input);
+		int temp = stringToInt(input);
+		if(temp<0){
+			String exceptionString = "Negatives not allowed:" + temp;
+			throw new IllegalArgumentException(exceptionString);
+		}
+		return temp;
 	}
 
 	private static int stringToInt(String input){
 		return Integer.parseInt(input);
 	}
 
-	private static String splitExpression = "[\n,]";
+	private static void checkNegative(String input){
+		int temp = stringToInt(input);
+		if(temp<0){
+			String exceptionString = "Negatives not allowed:" + temp;
+			throw new IllegalArgumentException(exceptionString);
+		}
+	}
+
+	private static String splitExpression = "[\n,]"; 
 }

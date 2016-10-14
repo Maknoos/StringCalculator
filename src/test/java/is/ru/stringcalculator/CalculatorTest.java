@@ -32,4 +32,12 @@ public class CalculatorTest {
 	public void TestNewLineAndCommas(){
 		assertEquals(27,Calculator.add("1\n4,5,7\n10"));
 	}
+	@Test (expected = IllegalArgumentException.class)
+	public void TestSingleNegative(){
+		assertEquals("Negatives not allowed:-1",Calculator.add("-1"));
+	}
+	@Test (expected = IllegalArgumentException.class)
+	public void TestMultipleNegative(){
+		assertEquals("Negatives not allowed:-1,-5,",Calculator.add("-1,5\n-5"));
+	}
 }
