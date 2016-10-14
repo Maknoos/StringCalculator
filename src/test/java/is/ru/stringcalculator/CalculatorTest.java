@@ -44,4 +44,13 @@ public class CalculatorTest {
 	public void TestLargeNumbers(){
 		assertEquals(15,Calculator.add("1200,5,10,100000"));
 	}
+	@Test
+	public void TestNewDelimiter(){
+		assertEquals(3,Calculator.add("“//;\n1;2"));
+	}
+	@Test (expected = IllegalArgumentException.class)
+	public void TestDelimiterNegative(){
+		assertEquals("Negatives not allowed:-1",Calculator.add("“//p\n1p6p-1p3"));
+	}
+
 }
