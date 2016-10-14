@@ -11,32 +11,8 @@ public class Calculator {
 		}
 
 		if(input.contains(",")||input.contains("\n")){
-			String [] numbers = input.split(splitExpression);
-			int arraySize = numbers.length;
-			int [] negatives = new int[arraySize];
-			int counter = 0;
-			int stringSum = 0;
-			boolean illegalInput = false;
-
-			while(counter!=arraySize){
-				int temp=stringToInt(numbers[counter]);
-				
-				if(isNegative(temp)){
-					illegalInput = true;
-					negatives[counter] = temp;
-				}
-				if(temp<1001){
-					stringSum += temp;
-				}
-				counter ++;
-			}
-
-			if(illegalInput){
-				createAndThrowMultipleException(negatives);
-			}
-			return stringSum;
+			return calculateTotal(input,splitExpression);
 		}
-
 		int temp = stringToInt(input);
 		if(isNegative(temp)){
 			String exceptionString = "Negatives not allowed:" + temp;
@@ -51,7 +27,14 @@ public class Calculator {
 		String Delimiter = cutString[1].substring(0,1);
 		String values = cutString[1].substring(2);
 		if(input.contains(Delimiter)){
-			String [] numbers = values.split(Delimiter);
+			return calculateTotal(values,Delimiter);
+		}
+
+		return stringToInt(input);
+	}
+
+	private static int calculateTotal(String input,String expression){
+			String [] numbers = input.split(expression);
 			int arraySize = numbers.length;
 			int [] negatives = new int[arraySize];
 			int counter = 0;
@@ -75,9 +58,6 @@ public class Calculator {
 				createAndThrowMultipleException(negatives);
 			}
 			return stringSum;
-		}
-
-		return 0;
 	}
 
 	private static void createAndThrowMultipleException( int [] negatives){
