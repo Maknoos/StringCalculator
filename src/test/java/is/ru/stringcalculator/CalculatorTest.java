@@ -40,4 +40,8 @@ public class CalculatorTest {
 	public void TestMultipleNegative(){
 		assertEquals("Negatives not allowed:-1,-5,",Calculator.add("-1,5\n-5"));
 	}
+	@Test
+	public void TestLargeNumbers(){
+		assertEquals(15,Calculator.add("1200,5,10,100000"));
+	}
 }

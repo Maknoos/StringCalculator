@@ -22,8 +22,9 @@ public class Calculator {
 					illegalInput = true;
 					negatives[counter] = temp;
 				}
-
-				stringSum += temp;
+				if(temp<1001){
+					stringSum += temp;
+				}
 				counter ++;
 			}
 
